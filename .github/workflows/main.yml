@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+
+name: 🚀 Build & Deploy Astro
+
+jobs:
+  web-deploy:
+    name: 🎉 Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🚚 Obtener código más reciente
+      uses: actions/checkout@v4
+
+    - name: 🟢 Usar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: 📦 Instalar dependencias
+      run: npm install
+
+    - name: 🏗️ Construir proyecto Astro
+      run: npm run build
+
+    - name: 📂 Deploy por FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftps
+        local-dir: dist/
