@@ -1,0 +1,86 @@
+---
+const { title, description, href } = Astro.props;
+---
+
+<div class="card">
+  <h3 class="card__title">{title}</h3>
+  <p class="card__desc">{description}</p>
+
+  {
+    href && (
+      <div class="card__actions">
+        <a href={href} class="card__btn">
+          Ver más
+        </a>
+      </div>
+    )
+  }
+</div>
+
+<style lang="scss">
+  // Variables
+  $card-bg: #ffffff;
+  $radius: 14px;
+  $shadow: 0 6px 18px rgba(12, 15, 24, 0.06);
+  $hover-shadow: 0 12px 30px rgba(12, 15, 24, 0.12);
+  $primary: #111; // negro del ejemplo
+
+  .card {
+    position: relative;
+    background: #fff;
+    border-radius: 35px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 18px rgba(12, 15, 24, 0.06);
+    overflow: visible;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px; // separación respecto al card
+      width: calc(
+        100% - 5px
+      ); // ancho ligeramente menor para que encaje perfecto
+      height: 10px; // grosor del borde inferior
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: inherit;
+      background: #111; // color del borde
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  .card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: #111827;
+  }
+
+  .card__desc {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    flex: 1;
+  }
+
+  .card__actions {
+    margin-top: 1.25rem;
+  }
+
+  .card__btn {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    background: $primary;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+</style>

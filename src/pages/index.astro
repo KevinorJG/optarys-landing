@@ -1,0 +1,107 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import NavigationBar from "../components/Navigation-bar.astro";
+import Banner from "../components/Banner.astro";
+import Card from "../components/Card.astro";
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+  <NavigationBar />
+
+  <main class="stack">
+    <Banner />
+    <Welcome />
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="grid cards">
+          <Card
+            title="Diseño UX/UI"
+            description="Creamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario."
+            href="/services#design"
+          />
+          <Card
+            title="Desarrollo Web"
+            description="Desarrollamos sitios web y aplicaciones escalables y de alto rendimiento."
+            href="/services#development"
+          />
+          <Card
+            title="Estrategia Digital"
+            description="Ofrecemos consultoría para optimizar tu presencia en línea y alcanzar tus objetivos."
+            href="/services#strategy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <style lang="scss">
+      // variables (ajusta colores/espaciados según tu diseño)
+      $max-width: 1200px;
+      $container-padding: 1.25rem;
+      $gutter: 1.5rem;
+      $radius: 12px;
+      $card-bg: #ffffff;
+      $muted: #7a7a7a;
+
+      // Reset/Utilities mínimas para este scope
+      .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: $container-padding;
+        padding-right: $container-padding;
+        max-width: $max-width;
+        box-sizing: border-box;
+      }
+
+      // Layout principal (stack de secciones)
+      .stack {
+        display: grid;
+        grid-template-columns: 2fr; // permite centrar contenido con container
+        gap: 4rem;
+
+      }
+
+      .section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        background: transparent; // si necesitas fondo, cámbialo aquí
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+        line-height: 1.2;
+        margin: 0 0 1.25rem 0;
+        font-weight: 700;
+        color: #111827; // gris oscuro, ajusta a tu paleta
+        text-align: center;
+      }
+
+      // Grid de tarjetas
+      .grid {
+        display: grid;
+        gap: $gutter;
+      }
+
+      // variante para las cards - responsive
+      .cards {
+        grid-template-columns: repeat(1, 1fr);
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (min-width: 992px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      // Estilos base para cada Card (si tu componente <Card /> ya aplica estilos,
+      // estos son sólo un fallback / complementario).
+      /* Si tu <Card/> acepta class="card" o props, añade esa clase dentro del componente. */
+      
+    </style>
+  </main>
+</Layout>
