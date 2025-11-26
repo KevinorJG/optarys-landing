@@ -11,8 +11,8 @@ export default defineConfig({
         optimize: {
           minify: true,
         },
-      }),
-      partytown()
+      })
     ],
   },
+  integrations: [partytown()],
 });
