@@ -11,8 +11,14 @@ export default defineConfig({
         optimize: {
           minify: true,
         },
-      })
+      }),
     ],
   },
-  integrations: [partytown()],
+  integrations: [
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
 });
