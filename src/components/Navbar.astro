@@ -1,0 +1,48 @@
+---
+import optarysLogo from "../assets/logo.svg";
+---
+
+<div id="navbar-container" class="fixed top-0 left-0 w-full bg-white z-50">
+  <nav
+    class="container mx-auto px-6 py-8 flex justify-between items-center gap-5 w-full"
+  >
+    <div class="image">
+      <a href="/"><img alt="logo" class="w-40" src={optarysLogo.src} /></a>
+    </div>
+    <button class="md:hidden p-2 text-xl cursor-pointer">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        >
+        </path>
+      </svg>
+    </button>
+    <div class="links hidden md:block">
+      <ul class="flex justify-center items-center gap-[40px]">
+        <li class="whitespace-nowrap">
+          <a href="#about-us">Nosotros</a>
+        </li>
+        <li class="whitespace-nowrap">
+          <a href="#services">Servicios</a>
+        </li>
+        <li class="whitespace-nowrap">
+          <a href="#use-cases">Casos de uso</a>
+        </li>
+        <li class="whitespace-nowrap"><a href="#blog">Blog</a></li>
+        <button
+          class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] bg-[#65fd08] font-medium rounded-md text-black cursor-pointer whitespace-nowrap border border-[#65fd08] hover:bg-white hover:text-dark duration-300"
+        >
+          Comenzar ahora
+        </button>
+      </ul>
+    </div>
+  </nav>
+</div>

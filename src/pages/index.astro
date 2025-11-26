@@ -1,107 +1,93 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
-import NavigationBar from "../components/Navigation-bar.astro";
-import Banner from "../components/Banner.astro";
+import Navbar from "../components/Navbar.astro";
 import Card from "../components/Card.astro";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+import ImgService1 from "../assets/images/card-image-2-CGzTEgpV.png";
+import ImgService2 from "../assets/images/card-image-6-BadEZ5Nh.png";
+import ImgService3 from "../assets/images/card-image-3-LkxHigZE.png";
+import Banner from "../components/Banner.astro";
+
+const services = [
+  {
+    title: "Desarrollo de aplicaciones Web",
+    image: ImgService1.src,
+    bgColor: "#65fd08",
+    textColor: "black",
+    bgTextColor: "#ffff",
+  },
+  {
+    title: "Desarrollo de Apps Móviles",
+    image: ImgService2.src,
+    bgColor: "#f3f3f3ff",
+    textColor: "black",
+    bgTextColor: "#65fd08",
+  },
+  {
+    title: "Marketing en redes sociales",
+    image: ImgService3.src,
+    bgColor: "black",
+    textColor: "black",
+    bgTextColor: "#f3f3f3ff",
+    iconBg: "white",
+    iconColor: "black",
+    iconTextColor: "white",
+  },
+];
 ---
 
 <Layout>
-  <NavigationBar />
-
-  <main class="stack">
+  <main>
+    <Navbar />
     <Banner />
-    <Welcome />
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <div class="grid cards">
-          <Card
-            title="Diseño UX/UI"
-            description="Creamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario."
-            href="/services#design"
-          />
-          <Card
-            title="Desarrollo Web"
-            description="Desarrollamos sitios web y aplicaciones escalables y de alto rendimiento."
-            href="/services#development"
-          />
-          <Card
-            title="Estrategia Digital"
-            description="Ofrecemos consultoría para optimizar tu presencia en línea y alcanzar tus objetivos."
-            href="/services#strategy"
-          />
+    <section id="services" class="mx-auto container px-6 py-8">
+      <div data-aos="fade-right">
+        <div
+          class="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-12 text-center lg:text-left"
+        >
+          <h1
+            class="text-black bg-[#65fd08] px-4 py-1 text-2xl font-medium rounded-md w-fit mx-auto lg:mx-0"
+          >
+            Servicios
+          </h1>
+          <p class="max-w-2xl lg:max-w-xl mx-auto lg:mx-0">
+            Ofrecemos una variedad de servicios para ayudar a las empresas a
+            crecer y tener éxito en línea. Estos servicios incluyen:
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          {
+            services.map((service, index) => (
+              <Card service={service} key={index} />
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <div
+          class="flex items-center bg-[#F3F3F3] rounded-2xl my-12 px-15 py-12 md:py-0"
+        >
+          <div class="left flex flex-col gap-5">
+            <h3 class="font-medium text-3xl">Let’s make things happen</h3>
+            <p class="w-full md:w-1/2">
+              Contact us today to learn more about how our digital marketing
+              services can help your business grow and succeed online.
+            </p><button
+              class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] rounded-xl cursor-pointer whitespace-nowrap bg-black text-white w-full md:w-fit"
+              >Get your free proposal</button
+            >
+          </div>
+          <div class="right w-2/4 hidden md:block">
+            <img
+              alt="service-image"
+              width="300"
+              src="/assets/service-image-D3jVepXb.png"
+            />
+          </div>
         </div>
       </div>
     </section>
-
-    <style lang="scss">
-      // variables (ajusta colores/espaciados según tu diseño)
-      $max-width: 1200px;
-      $container-padding: 1.25rem;
-      $gutter: 1.5rem;
-      $radius: 12px;
-      $card-bg: #ffffff;
-      $muted: #7a7a7a;
-
-      // Reset/Utilities mínimas para este scope
-      .container {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: $container-padding;
-        padding-right: $container-padding;
-        max-width: $max-width;
-        box-sizing: border-box;
-      }
-
-      // Layout principal (stack de secciones)
-      .stack {
-        display: grid;
-        grid-template-columns: 2fr; // permite centrar contenido con container
-        gap: 4rem;
-
-      }
-
-      .section {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        background: transparent; // si necesitas fondo, cámbialo aquí
-      }
-
-      .section-title {
-        font-size: 1.75rem;
-        line-height: 1.2;
-        margin: 0 0 1.25rem 0;
-        font-weight: 700;
-        color: #111827; // gris oscuro, ajusta a tu paleta
-        text-align: center;
-      }
-
-      // Grid de tarjetas
-      .grid {
-        display: grid;
-        gap: $gutter;
-      }
-
-      // variante para las cards - responsive
-      .cards {
-        grid-template-columns: repeat(1, 1fr);
-
-        @media (min-width: 640px) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        @media (min-width: 992px) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
-      // Estilos base para cada Card (si tu componente <Card /> ya aplica estilos,
-      // estos son sólo un fallback / complementario).
-      /* Si tu <Card/> acepta class="card" o props, añade esa clase dentro del componente. */
-      
-    </style>
   </main>
 </Layout>

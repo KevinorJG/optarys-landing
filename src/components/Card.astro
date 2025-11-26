@@ -1,86 +1,50 @@
 ---
-const { title, description, href } = Astro.props;
+const { service } = Astro.props;
+const { title, bgTextColor, iconBg, iconColor, iconTextColor, image } = service;
 ---
 
-<div class="card">
-  <h3 class="card__title">{title}</h3>
-  <p class="card__desc">{description}</p>
+<div
+  class="group cursor-pointer flex justify-between items-center w-full p-10 rounded-3xl border border-black border-b-[5px] shadow-[0_1px_0_0_#000] text-bg-black transition-transform hover:scale-[1.02] hover:shadow-[0_4px_0_0_#000]"
+  style={`background-color: ${service.bgColor}; color: ${service.textColor};`} data-aos="fade-right"
+>
+  <div class="flex flex-col gap-10 max-w-[60%]">
+    <h3 class="font-medium text-2xl leading-snug">
+      <span class="px-1" style={`background-color: ${bgTextColor};`}>
+        {title}
+      </span>
+    </h3>
 
-  {
-    href && (
-      <div class="card__actions">
-        <a href={href} class="card__btn">
-          Ver más
-        </a>
-      </div>
-    )
-  }
+    <div class="flex items-center gap-3 group">
+      <button
+        class="rounded-full cursor-pointer p-2 transition-colors duration-300"
+        style={`background-color: ${iconBg ?? "black"};`}
+      >
+        <svg
+          class="text-xl transition-transform duration-300 group-hover:scale-125"
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+          style={`color: ${iconColor ?? "#b9ff66ff"};`}
+        >
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"></path>
+        </svg>
+      </button>
+
+      <p
+        class="transition-all duration-300 group-hover:scale-110 group-hover:font-bold"
+        style={`color: ${iconTextColor ?? "black"};`}
+      >
+        Ver más
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-center">
+    <img alt="service" class="w-[140px] object-contain" src={image} />
+  </div>
 </div>
-
-<style lang="scss">
-  // Variables
-  $card-bg: #ffffff;
-  $radius: 14px;
-  $shadow: 0 6px 18px rgba(12, 15, 24, 0.06);
-  $hover-shadow: 0 12px 30px rgba(12, 15, 24, 0.12);
-  $primary: #111; // negro del ejemplo
-
-  .card {
-    position: relative;
-    background: #fff;
-    border-radius: 35px;
-    padding: 1.5rem;
-    box-shadow: 0 6px 18px rgba(12, 15, 24, 0.06);
-    overflow: visible;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 10px; // separación respecto al card
-      width: calc(
-        100% - 5px
-      ); // ancho ligeramente menor para que encaje perfecto
-      height: 10px; // grosor del borde inferior
-      border-bottom-left-radius: 35px;
-      border-bottom-right-radius: inherit;
-      background: #111; // color del borde
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    &:hover::after {
-      opacity: 1;
-    }
-  }
-
-  .card__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem 0;
-    color: #111827;
-  }
-
-  .card__desc {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #6b7280;
-    flex: 1;
-  }
-
-  .card__actions {
-    margin-top: 1.25rem;
-  }
-
-  .card__btn {
-    display: inline-block;
-    padding: 0.55rem 1rem;
-    background: $primary;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-</style>

@@ -1,157 +1,41 @@
 ---
-import bg from "../assets/background.svg";
-import hero from "../assets/astro.svg";
-
-export interface Props {
-	title?: string;
-	subtitle?: string;
-	primaryLabel?: string;
-	primaryHref?: string;
-	secondaryLabel?: string;
-	secondaryHref?: string;
-}
-
-const {
-	title = "Impulsa tu proyecto con soluciones digitales",
-	subtitle = "Diseño, desarrollo y estrategia para escalar tu producto.",
-	primaryLabel = "Comenzar",
-	primaryHref = "/contact",
-	secondaryLabel = "Nuestros servicios",
-	secondaryHref = "/services",
-} = Astro.props as Props;
+import BannerImg from "../assets/images/banner.png";
 ---
 
-<section class="banner section" aria-label="Hero banner">
-	<div class="container banner-inner">
-		<div class="container banner-content">
-			<p class="eyebrow">Soluciones digitales</p>
-			<h1 class="title">{title}</h1>
-			<p class="subtitle">{subtitle}</p>
-
-			<div class="actions">
-				<a class="btn btn-primary" href={primaryHref}>{primaryLabel}</a>
-				<a class="btn btn-secondary" href={secondaryHref}>{secondaryLabel}</a>
-			</div>
-		</div>
-
-		<div class="banner-visual">
-			<img class="bg" src={bg.src} alt="background decoration" aria-hidden="true" />
-			<img class="hero" src={hero.src} alt="Hero illustration" />
-		</div>
-	</div>
-</section>
-
-<style>
-	.banner {
-		padding: 3rem 1rem;
-		background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
-	}
-
-	.banner-inner {
-		max-width: 1100px;
-		margin: 0 auto;
-		display: flex;
-		gap: 2rem;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.banner-content {
-		flex: 1 1 50%;
-	}
-
-	.eyebrow {
-		margin: 0 0 0.5rem 0;
-		color: #10b981;
-		font-weight: 600;
-		letter-spacing: 0.02em;
-	}
-
-	.title {
-		margin: 0 0 1rem 0;
-		font-size: 2rem;
-		line-height: 1.1;
-		color: #0f172a;
-	}
-
-	.subtitle {
-		margin: 0 0 1.25rem 0;
-		color: #475569;
-		max-width: 46rem;
-	}
-
-	.actions {
-		display: flex;
-		gap: 0.75rem;
-		align-items: center;
-	}
-
-	.btn {
-		display: inline-block;
-		padding: 0.6rem 1rem;
-		border-radius: 8px;
-		text-decoration: none;
-		font-weight: 600;
-		box-sizing: border-box;
-	}
-
-	.btn-primary {
-		background: #0ea5a4;
-		color: #fff;
-		border: 2px solid transparent;
-		transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
-	}
-
-	.btn-primary:hover {
-		background: #08958f;
-	}
-
-	.btn-secondary {
-		background: transparent;
-		color: #0f172a;
-		border: 2px solid rgba(15,23,42,0.08);
-	}
-
-	.btn-secondary:hover {
-		background: rgba(15,23,42,0.03);
-	}
-
-	.banner-visual {
-		flex: 1 1 40%;
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.banner-visual .bg {
-		position: absolute;
-		inset: 0 auto 0 0;
-		width: 160%;
-		max-width: 720px;
-		opacity: 0.08;
-		transform: translateX(8%);
-		pointer-events: none;
-	}
-
-	.banner-visual .hero {
-		position: relative;
-		width: clamp(220px, 35vw, 420px);
-		height: auto;
-	}
-
-	@media (max-width: 880px) {
-		.banner-inner {
-			flex-direction: column-reverse;
-			text-align: center;
-		}
-
-		.banner-visual { order: -1; }
-
-		.banner-content { width: 100%; }
-
-		.btn { width: auto; }
-	}
-
-</style>
-
+<header
+  class="container px-6 mx-auto py-10 flex flex-col lg:flex-row items-center justify-between"
+>
+  <div class='lg:w-1/2" md:pt-24 lg:pt-32'>
+    <div class="w-full space-y-6">
+      <h1 class="w-4/4 md:w-2/3 text-5xl md:text-6xl font-medium">
+        Impulsa tu negocio al siguiente nivel
+      </h1>
+      <p class="w-5/6 md:w-4/9">
+        Creamos experiencias digitales que conectan con tu audiencia: desarrollo
+        web y mobile atractivo, contenido estratégico y campañas de marketing
+        que posicionan tu negocio donde debe estar.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <button
+          class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] font-medium bg-[#65fd08] rounded-md text-black cursor-pointer whitespace-nowrap border border-[#65fd08] hover:bg-white hover:text-dark duration-300"
+        >
+          Comenzar ahora
+        </button>
+        <button
+          class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] font-medium rounded-md bg-white text-black cursor-pointer whitespace-nowrap border border-black hover:bg-black hover:text-white duration-300"
+        >
+          Agenda tu consulta
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class='lg:w-1/2"' data-aos="fade-left">
+    <div class="image">
+      <img
+        alt="Illustration"
+        class="w-full h-auto mt-12 md:mt"
+        src={BannerImg.src}
+      />
+    </div>
+  </div>
+</header>
