@@ -36,5 +36,30 @@ const {
 <meta name="twitter:image" content={image} />
 
 <!-- Extra SEO -->
-<meta name="theme-color" content="#ffffff" />
+<meta name="theme-color" content="#65fd08" />
 <meta name="author" content="Optarys" />
+
+<!-- JSON-LD: Organization + WebSite -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Optarys",
+        "url": "https://optarys.com",
+        "logo": "https://optarys.com/og-image.jpg",
+        "sameAs": [
+          "https://www.facebook.com/optarys",
+          "https://www.twitter.com/optarys",
+          "https://www.linkedin.com/company/optarys"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://optarys.com",
+        "name": "Optarys"
+      }
+    ]
+  }
+</script>
