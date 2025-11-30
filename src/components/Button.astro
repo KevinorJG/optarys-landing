@@ -1,0 +1,62 @@
+---
+interface Props {
+  href?: string | null;
+  type?: "button" | "submit" | "reset";
+  variant?: "primary" | "outline";
+  size?: "sm" | "md" | "lg";
+  rounded?: string;
+  hover?: "on" | "off";
+  className?: string;
+}
+
+const {
+  href = null,
+  type = "button",
+  variant = "primary",
+  size = "md",
+  rounded = "md",
+  hover = "on",
+  className = ""
+} = Astro.props as Props;
+
+// Estilos con hover
+const hoverStyles = {
+  primary: "hover:bg-white hover:text-dark",
+  outline: "hover:bg-black hover:text-white",
+} as const;
+
+// Estilos sin hover
+const noHoverStyles = {
+  primary: "",
+  outline: "",
+} as const;
+
+const variants = {
+  primary: `bg-[#65fd08] text-black border border-[#65fd08]`,
+  outline: `bg-white text-black border border-black`,
+} as const;
+
+const sizes = {
+  sm: "px-[12px] py-[8px]",
+  md: "px-[15px] py-[10px] md:px-[22px] md:py-[15px]",
+  lg: "px-[25px] py-[18px]",
+} as const;
+
+const base = "font-medium cursor-pointer whitespace-nowrap duration-300";
+
+// Elegir hover o no hover
+const activeHover =
+  hover === "on" ? hoverStyles[variant] : noHoverStyles[variant];
+
+const classes = `${base} ${variants[variant]} ${sizes[size]} ${activeHover} rounded-${rounded} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+  </button>
+)}

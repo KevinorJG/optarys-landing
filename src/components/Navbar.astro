@@ -1,5 +1,6 @@
 ---
 import optarysLogo from "../assets/logo.svg";
+import Button from "./Button.astro";
 ---
 
 <div id="navbar-container" class="fixed top-0 left-0 w-full bg-white z-50">
@@ -37,11 +38,7 @@ import optarysLogo from "../assets/logo.svg";
           <a href="#use-cases">Casos de uso</a>
         </li>
         <li class="whitespace-nowrap"><a href="#blog">Blog</a></li>
-        <button
-          class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] bg-[#65fd08] font-medium rounded-md text-black cursor-pointer whitespace-nowrap border border-[#65fd08] hover:bg-white hover:text-dark duration-300"
-        >
-          Comenzar ahora
-        </button>
+        <Button variant="primary">Comenzar ahora</Button>
       </ul>
     </div>
   </nav>

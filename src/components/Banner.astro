@@ -1,5 +1,6 @@
 ---
 import BannerImg from "../assets/images/banner.png";
+import Button from "./Button.astro";
 ---
 
 <header
@@ -16,16 +17,8 @@ import BannerImg from "../assets/images/banner.png";
         que posicionan tu negocio donde debe estar.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <button
-          class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] font-medium bg-[#65fd08] rounded-md text-black cursor-pointer whitespace-nowrap border border-[#65fd08] hover:bg-white hover:text-dark duration-300"
-        >
-          Comenzar ahora
-        </button>
-        <button
-          class="px-[15px] py-[10px] md:px-[22px] md:py-[15px] font-medium rounded-md bg-white text-black cursor-pointer whitespace-nowrap border border-black hover:bg-black hover:text-white duration-300"
-        >
-          Agenda tu consulta
-        </button>
+       <Button variant="primary">Comenzar ahora</Button>
+       <Button variant="outline">Agenda tu consulta</Button>
       </div>
     </div>
   </div>
